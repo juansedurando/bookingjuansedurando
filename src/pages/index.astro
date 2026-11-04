@@ -6,7 +6,7 @@ import Icon from '../components/Icon.astro';
 import PresskitSlide from '../components/PresskitSlide.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import logo from '../components/logo.svg?raw';
-import { site, isSet, whatsappLink, trayectoria, estilo, eventos } from '../data/site';
+import { site, isSet, whatsappLink, trayectoria, estilo, eventos, descargas } from '../data/site';
 
 // Galería de shows: "big" ocupa dos filas. "w" es el ancho real del original (versión grande)
 const galeria = [
@@ -69,10 +69,17 @@ const galeria = [
         alt="Juanse Durando sentado sobre el flight case con su logo"
         loading="lazy"
       />
-      <a class="retrato__link" href={site.socials.instagram} target="_blank" rel="noopener" data-magnetic>
-        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>
-        Fotos y videos
-      </a>
+      <div class="retrato__descargas">
+        <p class="retrato__label">Material en alta para flyers y productoras</p>
+        <nav class="retrato__botonera" aria-label="Descargar fotos y videos en alta">
+          {descargas.map((d) => (
+            <a class="retrato__btn" href={d.href} {...(d.download ? { download: '' } : { target: '_blank', rel: 'noopener' })}>
+              {d.label}
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M11 4h2v9.2l3.3-3.3 1.4 1.4L12 17l-5.7-5.7 1.4-1.4 3.3 3.3V4ZM5 19h14v2H5z" fill="currentColor"/></svg>
+            </a>
+          ))}
+        </nav>
+      </div>
     </section>
 
     <PresskitSlide img="sonido" title="Sonido y estilo" heading="SOUND & STYLE" alt="Juanse Durando mezclando en la consola" side="left">
@@ -107,7 +114,7 @@ const galeria = [
       </div>
     </section>
 
-    <PresskitSlide img="fiestau" title="En cabina" heading="ON STAGE" maxW={1920} alt="Juanse Durando en la cabina del escenario de Fiesta U" side="right" id="en-cabina">
+    <PresskitSlide img="fiestau" title="En cabina" heading="ON STAGE" maxW={1280} alt="Juanse Durando en la cabina del escenario de Fiesta U" side="right" id="en-cabina">
       <p>Juanse se caracteriza por una actitud seria y responsable detrás de la cabina, dejando que la música sea la protagonista de cada presentación.</p>
     </PresskitSlide>
 

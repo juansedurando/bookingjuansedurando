@@ -419,23 +419,53 @@ html.intro-active .hero__logo {
     linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
   mask-composite: intersect;
 }
-.retrato__link {
+.retrato__descargas {
   position: relative;
   z-index: 1;
-  margin-top: -40px;
-  display: inline-flex;
+  margin-top: -16px;
+  width: 100%;
+  padding: 0 var(--pad);
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 14px;
+}
+.retrato__label {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-align: center;
+  text-transform: uppercase;
+  color: #9a958f;
+}
+.retrato__botonera {
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 10px;
-  padding: 16px 28px;
+  width: 100%;
+  max-width: 360px;
+}
+.retrato__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 15px 24px;
   border-radius: 999px;
-  background: var(--accent);
-  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(5, 5, 5, 0.6);
+  color: var(--fg);
   font-weight: 600;
   font-size: 13px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   text-decoration: none;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: background 0.3s, border-color 0.3s;
+}
+.retrato__btn:hover,
+.retrato__btn:focus-visible {
+  background: var(--accent);
+  border-color: var(--accent);
 }
 @media (min-width: 861px) {
   .retrato {
@@ -446,10 +476,13 @@ html.intro-active .hero__logo {
     height: min(88svh, 1100px);
     max-width: 100%;
   }
-  .retrato__link {
-    margin-top: -56px;
-    font-size: 14px;
-    padding: 18px 34px;
+  .retrato__descargas {
+    margin-top: -20px;
+  }
+  .retrato__botonera {
+    grid-template-columns: repeat(3, auto);
+    max-width: none;
+    width: auto;
   }
 }
 

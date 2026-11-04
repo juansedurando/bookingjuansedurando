@@ -12,6 +12,11 @@ export const site = {
   email: 'juansegundodurando@gmail.com',
   // Press kit para organizadores (rider técnico incluido)
   presskit: 'https://noisy-dew-26ee.juanse-durando-presskitpagesdev.workers.dev/',
+  // Botonera de descargas: material en alta para productoras y flyers
+  descargas: {
+    book: 'https://drive.google.com/drive/folders/1TFS_K0_WqHAaREKbYHwzP1LNg3nu79Fu',
+    eventos: 'https://drive.google.com/drive/folders/1DRgD2_g02NjahV33VuxvAFCuNBJ3SGM0',
+  },
   // Redes: para sumar una, pegar el link en lugar de PENDIENTE.
   // Aparecen solas en la web (arriba, en la portada y en Contacto) y en Google.
   socials: {
@@ -59,3 +64,10 @@ export const trayectoria = [
 export const estilo = ['Cachengue', 'Reggaetón', 'Pop', 'Remixes', 'Mashups', 'Edits'];
 
 export const eventos = ['Boliches', 'Fiestas', 'XV', 'Eventos sociales'];
+
+// Botones de la botonera de descargas. El logo se baja directo de la web (PNG y SVG, blanco y negro, en un zip)
+export const descargas = [
+  { label: 'Book de fotos', href: site.descargas.book },
+  { label: 'Eventos: fotos y videos', href: site.descargas.eventos },
+  { label: 'Logo', href: 'descargas/juanse-durando-logo.zip', download: true },
+];
