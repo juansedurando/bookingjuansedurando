@@ -8,15 +8,6 @@ import SocialLinks from '../components/SocialLinks.astro';
 import logo from '../components/logo.svg?raw';
 import { site, isSet, whatsappLink, trayectoria, estilo, eventos } from '../data/site';
 
-// Slider tipo historias de Instagram, con la sesión de estudio
-const slides = [
-  { name: 'slide-auriculares', alt: 'Juanse Durando poniéndose los auriculares' },
-  { name: 'slide-anteojos', alt: 'Juanse Durando con anteojos de sol' },
-  { name: 'slide-dramatica', alt: 'Retrato de Juanse Durando con luz lateral' },
-  { name: 'slide-brazos', alt: 'Juanse Durando de brazos cruzados' },
-  { name: 'slide-espaldas', alt: 'Juanse Durando de espaldas con auriculares' },
-];
-
 // Galería de shows: "big" ocupa dos filas. "w" es el ancho real del original (versión grande)
 const galeria = [
   { base: 'img/vivo-escenario', w: 1307, alt: 'Juanse Durando en escenario con su logo de fondo', big: true },
@@ -69,23 +60,19 @@ const galeria = [
       <p>Empezó tocando en eventos chicos, donde fue armando su público, ampliando su repertorio y encontrando una identidad musical propia, siempre buscando un ambiente cálido y conectar con quienes lo escuchan.</p>
     </PresskitSlide>
 
-    <section class="stories" aria-label="Fotos de Juanse Durando" data-stories>
-      <div class="stories__bars" aria-hidden="true">
-        {slides.map(() => <span><i></i></span>)}
-      </div>
-      {slides.map((s, i) => (
-        <figure class:list={['stories__slide', { 'is-active': i === 0 }]}>
-          <img
-            src={`img/${s.name}-1200.webp`}
-            srcset={`img/${s.name}-800.webp 800w, img/${s.name}-1200.webp 1200w, img/${s.name}-1600.webp 1600w`}
-            sizes="(min-width: 900px) 50vw, 100vw"
-            alt={s.alt}
-            loading="lazy"
-          />
-        </figure>
-      ))}
-      <button class="stories__nav stories__nav--prev" type="button" aria-label="Foto anterior" data-stories-prev></button>
-      <button class="stories__nav stories__nav--next" type="button" aria-label="Foto siguiente" data-stories-next></button>
+    <section class="retrato" aria-label="Juanse Durando sentado sobre su flight case">
+      <img
+        class="retrato__img"
+        src="img/retrato-flightcase-1200.webp"
+        srcset="img/retrato-flightcase-1200.webp 1200w, img/retrato-flightcase-1800.webp 1800w, img/retrato-flightcase-2600.webp 2600w"
+        sizes="(min-width: 861px) 60vw, 100vw"
+        alt="Juanse Durando sentado sobre el flight case con su logo"
+        loading="lazy"
+      />
+      <a class="retrato__link" href={site.socials.instagram} target="_blank" rel="noopener" data-magnetic>
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>
+        Fotos y videos
+      </a>
     </section>
 
     <PresskitSlide img="sonido" title="Sonido y estilo" heading="SOUND & STYLE" alt="Juanse Durando mezclando en la consola" side="left">
@@ -120,7 +107,7 @@ const galeria = [
       </div>
     </section>
 
-    <PresskitSlide img="cabina" title="En cabina" heading="ON STAGE" maxW={1920} alt="Juanse Durando en el escenario y en primer plano con gorra" side="right" id="en-cabina">
+    <PresskitSlide img="fiestau" title="En cabina" heading="ON STAGE" maxW={1920} alt="Juanse Durando en la cabina del escenario de Fiesta U" side="right" id="en-cabina">
       <p>Juanse se caracteriza por una actitud seria y responsable detrás de la cabina, dejando que la música sea la protagonista de cada presentación.</p>
     </PresskitSlide>
 

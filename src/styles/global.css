@@ -259,11 +259,6 @@ button {
   background: linear-gradient(var(--bg) 0%, var(--bg) 66%, rgba(5, 5, 5, 0));
   pointer-events: none;
 }
-.header.is-solid.is-over-stories {
-  opacity: 0;
-  transform: translateY(-100%);
-  pointer-events: none;
-}
 .header__logo {
   width: 104px;
   color: var(--fg);
@@ -401,82 +396,61 @@ html.intro-active .hero__logo {
   visibility: hidden;
 }
 
-/* ---------- STORIES ---------- */
+/* ---------- RETRATO (foto fija con link a fotos y videos) ---------- */
 
-.stories {
+.retrato {
   position: relative;
-  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0 64px;
   overflow: hidden;
   background: var(--bg);
-  touch-action: pan-y;
 }
-.stories__slide {
-  position: absolute;
-  inset: 0;
-  margin: 0;
-  opacity: 0;
-  transition: opacity 0.7s;
-}
-.stories__slide.is-active {
-  opacity: 1;
-}
-/* Los bordes de la foto se funden con el negro de la página: no se ve el recuadro */
-.stories__slide {
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 78%, transparent 100%),
-    linear-gradient(to right, transparent 0%, #000 9%, #000 91%, transparent 100%);
+.retrato__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Los bordes se funden con el negro de la página: no se ve el recuadro */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 80%, transparent 100%),
+    linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
   -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 78%, transparent 100%),
-    linear-gradient(to right, transparent 0%, #000 9%, #000 91%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 80%, transparent 100%),
+    linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
   mask-composite: intersect;
 }
-.stories__slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 22%;
-  transform: scale(1.12);
-}
-.stories__slide.is-active img {
-  transform: scale(1);
-  transition: transform 6s linear;
-}
-.stories__bars {
-  position: absolute;
-  top: calc(14px + env(safe-area-inset-top, 0px));
-  left: 12px;
-  right: 12px;
-  z-index: 2;
-  display: flex;
-  gap: 4px;
-}
-.stories__bars span {
-  flex: 1;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.3);
-  overflow: hidden;
-}
-.stories__bars i {
-  display: block;
-  height: 100%;
-  background: #fff;
-  transform: scaleX(0);
-  transform-origin: left;
-}
-.stories__nav {
-  position: absolute;
-  top: 0;
-  bottom: 0;
+.retrato__link {
+  position: relative;
   z-index: 1;
-  width: 50%;
-  -webkit-tap-highlight-color: transparent;
+  margin-top: -40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 28px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
-.stories__nav--prev {
-  left: 0;
-  cursor: w-resize;
-}
-.stories__nav--next {
-  right: 0;
-  cursor: e-resize;
+@media (min-width: 861px) {
+  .retrato {
+    padding: 40px 0 90px;
+  }
+  .retrato__img {
+    width: auto;
+    height: min(88svh, 1100px);
+    max-width: 100%;
+  }
+  .retrato__link {
+    margin-top: -56px;
+    font-size: 14px;
+    padding: 18px 34px;
+  }
 }
 
 /* ---------- GALERÍA ---------- */
@@ -763,6 +737,11 @@ html.intro-active .hero__logo {
   #en-cabina .pk__text {
     margin-top: -16vw;
   }
+  /* El cartel "FIESTA U" de la foto va arriba a la derecha: el título va a la izquierda */
+  #en-cabina .pk__title {
+    right: auto;
+    left: var(--pad);
+  }
 }
 .pk__text {
   padding: 22px var(--pad) 40px;
@@ -841,6 +820,13 @@ html.intro-active .hero__logo {
     top: auto;
     bottom: 9%;
     width: min(32%, 520px);
+  }
+  /* El cartel "FIESTA U" de la foto ocupa arriba: el título va abajo a la izquierda */
+  #en-cabina .pk__title {
+    top: auto;
+    bottom: 8%;
+    right: auto;
+    left: 5%;
   }
   .rider dt {
     font-size: 0.72em;
@@ -925,44 +911,3 @@ html.intro-active .contratar-float {
   opacity: 0;
 }
 
-/* En PC las historias pasan a carrusel: foto central grande y las vecinas a los costados */
-@media (min-width: 861px) {
-  .stories {
-    --h: 84svh;
-  }
-  .stories__slide {
-    inset: auto;
-    top: 50%;
-    left: 50%;
-    width: calc(var(--h) * 0.75);
-    height: var(--h);
-    border-radius: 14px;
-    overflow: hidden;
-    transform: translate(-50%, -50%) scale(0.7);
-    transition: transform 1s var(--ease-out), opacity 1s, filter 1s;
-  }
-  .stories__slide.is-active {
-    transform: translate(-50%, -50%) scale(1);
-  }
-  .stories__slide.is-prev,
-  .stories__slide.is-next {
-    opacity: 0.35;
-    filter: grayscale(1);
-  }
-  .stories__slide.is-prev {
-    transform: translate(-165%, -50%) scale(0.78);
-  }
-  .stories__slide.is-next {
-    transform: translate(65%, -50%) scale(0.78);
-  }
-  .stories__slide img {
-    object-position: 50% 50%;
-  }
-  .stories__bars {
-    top: calc(50% - var(--h) / 2 + 14px);
-    left: 50%;
-    right: auto;
-    width: calc(var(--h) * 0.75 - 28px);
-    transform: translateX(-50%);
-  }
-}
