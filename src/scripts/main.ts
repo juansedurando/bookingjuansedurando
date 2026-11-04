@@ -39,6 +39,14 @@ ScrollTrigger.create({
   onLeaveBack: () => header?.classList.remove('is-solid'),
 });
 
+// Header: se esconde mientras las historias ocupan la parte de arriba (como en Instagram)
+ScrollTrigger.create({
+  trigger: '[data-stories]',
+  start: 'top 72px',
+  end: 'bottom 72px',
+  toggleClass: { targets: '[data-header]', className: 'is-over-stories' },
+});
+
 // ---------- Stories ----------
 const stories = document.querySelector<HTMLElement>('[data-stories]');
 if (stories) {
@@ -125,7 +133,6 @@ gsap.utils.toArray<HTMLElement>('.galeria__item').forEach((el) => {
   // Stories: entra con zoom desde abajo
   gsap.from('[data-stories]', {
     scale: 0.88,
-    borderRadius: 24,
     ease: 'none',
     scrollTrigger: { trigger: '[data-stories]', start: 'top bottom', end: 'top top', scrub: true },
   });
