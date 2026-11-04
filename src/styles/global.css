@@ -592,36 +592,6 @@ html.intro-active .hero__logo {
     transform: translateX(-50%);
   }
 }
-.trayecto__stat {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  padding: clamp(28px, 5vw, 56px) var(--pad);
-}
-.trayecto__num {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(56px, 13vw, 160px);
-  line-height: 0.9;
-  color: var(--accent);
-  letter-spacing: -0.03em;
-}
-@media (max-width: 560px) {
-  .trayecto__stat {
-    flex-direction: column;
-    gap: 8px;
-    text-align: center;
-  }
-}
-.trayecto__label {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--fg);
-  line-height: 1.6;
-}
-
 /* ---------- CONTACTO: eventos y press kit ---------- */
 
 .contacto__eventos {
@@ -756,9 +726,6 @@ html.intro-active .hero__logo {
   }
   .rider__nota {
     font-size: 0.75em;
-  }
-  .trayecto__label {
-    font-size: 14px;
   }
   .contacto__eventos {
     font-size: 13px;
