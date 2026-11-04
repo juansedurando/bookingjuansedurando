@@ -719,9 +719,18 @@ html.intro-active .hero__logo {
   .pk__text {
     position: absolute;
     top: 22%;
-    width: min(40%, 520px);
+    width: min(38%, 640px);
     padding: 0;
-    font-size: clamp(14px, 1.1vw, 17px);
+    font-size: clamp(15px, 1.12vw, 21px);
+    line-height: 1.6;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.8);
+  }
+  .pk__lead {
+    font-size: 1.2em;
+  }
+  /* En pantallas muy anchas la placa no pasa del alto de la ventana */
+  .pk__media img {
+    max-height: 100svh;
   }
   .pk--right .pk__text {
     right: 6%;
@@ -737,7 +746,34 @@ html.intro-active .hero__logo {
   #en-cabina .pk__text {
     top: auto;
     bottom: 9%;
-    width: min(32%, 420px);
+    width: min(32%, 520px);
+  }
+  .rider dt {
+    font-size: 0.72em;
+  }
+  .rider dd span {
+    font-size: 0.85em;
+  }
+  .rider__nota {
+    font-size: 0.75em;
+  }
+  .trayecto__label {
+    font-size: 14px;
+  }
+  .contacto__eventos {
+    font-size: 13px;
+  }
+  /* Portada en PC: el logo no tapa la cara y Juanse queda hacia la derecha */
+  .hero__logo {
+    width: min(50vw, 860px);
+  }
+  .hero__media img {
+    object-position: 50% 22%;
+  }
+  .hero__shade {
+    background:
+      linear-gradient(to top, var(--bg) 2%, transparent 45%),
+      linear-gradient(to right, rgba(5, 5, 5, 0.75) 0%, transparent 55%);
   }
 }
 
