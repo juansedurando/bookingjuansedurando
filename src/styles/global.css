@@ -425,30 +425,6 @@ html.intro-active .hero__logo {
   align-items: flex-end;
   width: 100%;
 }
-.retrato__recursos {
-  position: relative;
-  z-index: 1;
-  margin-top: -24px;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 16px 28px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  background: rgba(5, 5, 5, 0.6);
-  color: var(--fg);
-  font-weight: 600;
-  font-size: 13px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: background 0.3s, border-color 0.3s;
-}
-.retrato__recursos:hover,
-.retrato__recursos:focus-visible {
-  background: var(--accent);
-  border-color: var(--accent);
-}
 @media (min-width: 861px) {
   .retrato {
     padding: 40px 0 90px;
@@ -462,11 +438,7 @@ html.intro-active .hero__logo {
     mask-image: linear-gradient(to bottom, transparent 0%, #000 10%, #000 84%, transparent 100%),
       linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
   }
-  .retrato__recursos {
-    margin-top: -28px;
-    font-size: 14px;
   }
-}
 
 /* ---------- GALERÍA ---------- */
 
@@ -819,6 +791,10 @@ html.intro-active .hero__logo {
   /* En pantallas muy anchas la placa no pasa del alto de la ventana */
   .pk__media img {
     max-height: 100svh;
+  }
+  /* Que no se corte el cartel "FIESTA U" de arriba */
+  #en-cabina .pk__media img {
+    object-position: 50% 10%;
   }
   .pk--right .pk__text {
     right: 6%;
