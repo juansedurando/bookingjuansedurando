@@ -22,7 +22,7 @@ export const site = {
   socials: {
     instagram: 'https://www.instagram.com/juansedurando',
     tiktok: 'PENDIENTE',
-    soundcloud: 'PENDIENTE',
+    soundcloud: 'https://soundcloud.com/juanse-376189744',
     spotify: 'PENDIENTE',
     youtube: 'PENDIENTE',
   },
