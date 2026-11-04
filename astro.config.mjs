@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import csp from './integrations/csp.mjs';
 
 // En GitHub Pages la web vive en /Juanse-Durando-/; en el dominio propio, en la raíz.
 // TODO: reemplazar el dominio cuando esté comprado
@@ -9,4 +10,5 @@ export default defineConfig({
   base: pages ? '/Juanse-Durando-' : undefined,
   // recursos.html queda al lado de index.html: las rutas relativas (img/, descargas/) sirven igual
   build: { format: 'file' },
+  integrations: [csp()],
 });
