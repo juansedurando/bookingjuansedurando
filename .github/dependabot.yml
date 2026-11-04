@@ -1,0 +1,13 @@
+# Avisa con un PR cuando hay actualizaciones de seguridad o versiones nuevas.
+# Ningún PR se publica solo: hay que mergearlo a mano.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 3
