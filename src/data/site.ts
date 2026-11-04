@@ -68,8 +68,8 @@ export const eventos = ['Boliches', 'Fiestas', 'XV', 'Eventos sociales'];
 // Página de recursos: material en alta para productoras y flyers
 export const recursos = {
   carpetas: [
-    { titulo: 'Book de fotos', detalle: 'Fotos de estudio en alta', href: site.descargas.book, img: 'img/retrato-flightcase-1200.webp' },
-    { titulo: 'Eventos', detalle: 'Fotos y videos en vivo', href: site.descargas.eventos, img: 'img/vivo-escenario-900.webp' },
+    { titulo: 'Book de fotos', href: site.descargas.book, img: 'img/retrato-flightcase-1200.webp' },
+    { titulo: 'Eventos', href: site.descargas.eventos, img: 'img/vivo-escenario-900.webp' },
   ],
   logo: [
     { label: 'PNG blanco', href: 'descargas/juanse-durando-logo-blanco.png' },
