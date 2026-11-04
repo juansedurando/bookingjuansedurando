@@ -678,9 +678,6 @@ html.intro-active .hero__logo {
   .pk--left .pk__title {
     left: var(--pad);
   }
-  #rider .pk__title {
-    font-size: 9vw;
-  }
   .pk__text {
     position: relative;
     z-index: 1;
@@ -716,31 +713,6 @@ html.intro-active .hero__logo {
   line-height: 1.35;
   color: var(--fg);
 }
-.rider {
-  margin: 0 0 18px;
-}
-.rider dt {
-  margin-top: 14px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-.rider dd {
-  margin: 2px 0 0;
-  color: var(--fg);
-}
-.rider dd span {
-  color: var(--muted);
-  font-size: 13px;
-}
-.rider__nota {
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
 @media (min-width: 861px) {
   .pk__text {
     position: absolute;
@@ -769,9 +741,6 @@ html.intro-active .hero__logo {
   .pk--left .pk__text {
     left: 5%;
   }
-  #rider .pk__text {
-    top: 18%;
-  }
   /* En "On stage" la cara ocupa el centro: el texto va abajo */
   #en-cabina .pk__text {
     top: auto;
@@ -784,15 +753,6 @@ html.intro-active .hero__logo {
     bottom: 8%;
     right: auto;
     left: 5%;
-  }
-  .rider dt {
-    font-size: 0.72em;
-  }
-  .rider dd span {
-    font-size: 0.85em;
-  }
-  .rider__nota {
-    font-size: 0.75em;
   }
   .contacto__eventos {
     font-size: 13px;
