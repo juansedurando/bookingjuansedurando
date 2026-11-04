@@ -8,7 +8,6 @@ import logo from './logo.svg?raw';
 
   <div class="intro__bg" data-intro-bg>
     <video
-      src="video/intro-loop.mp4"
       poster="img/intro-poster.jpg"
       muted
       autoplay
@@ -21,6 +20,13 @@ import logo from './logo.svg?raw';
       x-webkit-airplay="deny"
       tabindex="-1"
     ></video>
+    <script is:inline>
+      // Celular: versión liviana (540x960). PC: versión 1080x1920 para que no se vea borrosa.
+      (function () {
+        var v = document.currentScript.previousElementSibling;
+        v.src = window.innerWidth >= 861 ? 'video/intro-loop-1080.mp4' : 'video/intro-loop.mp4';
+      })();
+    </script>
   </div>
   <div class="intro__grain" aria-hidden="true"></div>
 

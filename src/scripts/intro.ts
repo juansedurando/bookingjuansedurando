@@ -103,9 +103,10 @@ export function runIntro({ onDone }: IntroOptions) {
     ['canplay', 'loadeddata', 'pause', 'ended', 'stalled', 'suspend', 'emptied'].forEach((ev) =>
       video.addEventListener(ev, () => setTimeout(playVideo, ev === 'pause' ? 50 : 0)),
     );
-    // Si no arrancó en 2,5 s (sin evento de error), se pasa a la imagen animada
+    // Si a los 2,5 s ya tiene datos para reproducir pero sigue quieto, el sistema bloquea el
+    // autoplay: se pasa a la imagen animada. Si todavía está descargando, se lo deja cargar.
     setTimeout(() => {
-      if (video.paused && video.currentTime === 0) useFallback();
+      if (video.paused && video.currentTime === 0 && video.readyState >= 3) useFallback();
     }, 2500);
   }
   const watchdog = window.setInterval(playVideo, 500);
