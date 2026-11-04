@@ -17,18 +17,18 @@ const slides = [
   { name: 'slide-espaldas', alt: 'Juanse Durando de espaldas con auriculares' },
 ];
 
-// Galería de shows: "big" ocupa dos filas
+// Galería de shows: "big" ocupa dos filas. "w" es el ancho real del original (versión grande)
 const galeria = [
-  { base: 'img/vivo-escenario', alt: 'Juanse Durando en escenario con su logo de fondo', big: true },
-  { base: 'img/vivo-azul', alt: 'Juanse Durando pasando música con luces azules' },
-  { base: 'img/vivo-fiesta-u', alt: 'Juanse Durando en Fiesta U, Santa Fe' },
-  { base: 'img/vivo-gorra', alt: 'Juanse Durando con gorra y auriculares' },
-  { base: 'img/vivo-controlador', alt: 'Juanse Durando en el controlador' },
-  { base: 'img/vivo-xv', alt: 'Juanse Durando tocando en un cumpleaños de 15' },
-  { base: 'img/vivo-aire-libre', alt: 'Juanse Durando en un evento al aire libre', big: true },
-  { base: 'img/vivo-cabina', alt: 'Juanse Durando en cabina' },
-  { base: 'img/vivo-bn', alt: 'Juanse Durando en blanco y negro' },
-  { base: 'img/vivo-gorra2', alt: 'Primer plano de Juanse Durando con gorra' },
+  { base: 'img/vivo-escenario', w: 1307, alt: 'Juanse Durando en escenario con su logo de fondo', big: true },
+  { base: 'img/vivo-azul', w: 1320, alt: 'Juanse Durando pasando música con luces azules' },
+  { base: 'img/vivo-fiesta-u', w: 639, alt: 'Juanse Durando en Fiesta U, Santa Fe' },
+  { base: 'img/vivo-gorra', w: 1320, alt: 'Juanse Durando con gorra y auriculares' },
+  { base: 'img/vivo-controlador', w: 1320, alt: 'Juanse Durando en el controlador' },
+  { base: 'img/vivo-xv', w: 941, alt: 'Juanse Durando tocando en un cumpleaños de 15' },
+  { base: 'img/vivo-aire-libre', w: 1320, alt: 'Juanse Durando en un evento al aire libre', big: true },
+  { base: 'img/vivo-cabina', w: 1320, alt: 'Juanse Durando en cabina' },
+  { base: 'img/vivo-bn', w: 1320, alt: 'Juanse Durando en blanco y negro' },
+  { base: 'img/vivo-gorra2', w: 1020, alt: 'Primer plano de Juanse Durando con gorra' },
 ];
 ---
 
@@ -133,7 +133,7 @@ const galeria = [
         <figure class:list={['galeria__item', { 'galeria__item--big': g.big }]} data-reveal-img>
           <img
             src={`${g.base}-900.webp`}
-            srcset={`${g.base}-900.webp 900w, ${g.base}-1600.webp 1600w`}
+            srcset={g.w > 900 ? `${g.base}-900.webp 900w, ${g.base}-1600.webp ${g.w}w` : undefined}
             sizes="(min-width: 700px) 34vw, 50vw"
             alt={g.alt}
             loading="lazy"
