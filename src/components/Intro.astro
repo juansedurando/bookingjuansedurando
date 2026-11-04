@@ -7,7 +7,20 @@ import logo from './logo.svg?raw';
   <div class="intro__half intro__half--bottom" data-intro-half></div>
 
   <div class="intro__bg" data-intro-bg>
-    <video src="video/intro-loop.mp4" poster="img/intro-poster.jpg" muted autoplay loop playsinline preload="auto"></video>
+    <video
+      src="video/intro-loop.mp4"
+      poster="img/intro-poster.jpg"
+      muted
+      autoplay
+      loop
+      playsinline
+      webkit-playsinline
+      preload="auto"
+      disablepictureinpicture
+      disableremoteplayback
+      x-webkit-airplay="deny"
+      tabindex="-1"
+    ></video>
   </div>
   <div class="intro__grain" aria-hidden="true"></div>
 

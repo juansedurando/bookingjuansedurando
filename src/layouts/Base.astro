@@ -11,7 +11,9 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: site.name,
+  alternateName: 'Juan Segundo Durando',
   jobTitle: 'DJ',
+  description: site.description,
   url,
   image: ogImage,
   address: {
@@ -41,8 +43,19 @@ const jsonLd = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={site.description} />
     <meta property="og:url" content={url} />
+    <meta property="og:site_name" content={site.name} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${site.name}, DJ en ${site.city}`} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={site.description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="sitemap" type="application/xml" href="sitemap.xml" />
+    {Object.values(site.socials).filter(isSet).map((href) => <link rel="me" href={href} />)}
 
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

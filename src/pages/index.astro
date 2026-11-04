@@ -3,8 +3,10 @@ import Base from '../layouts/Base.astro';
 import Intro from '../components/Intro.astro';
 import Header from '../components/Header.astro';
 import Icon from '../components/Icon.astro';
+import HoloLogo from '../components/HoloLogo.astro';
+import SocialLinks from '../components/SocialLinks.astro';
 import logo from '../components/logo.svg?raw';
-import { site, isSet, whatsappLink } from '../data/site';
+import { site, isSet, whatsappLink, trayectoria, estilo, eventos } from '../data/site';
 
 // Slider tipo historias de Instagram, con la sesión de estudio
 const slides = [
@@ -44,7 +46,7 @@ const galeria = [
       <div class="hero__media" data-hero-media>
         <img
           src="img/hero-1600.webp"
-          srcset="img/hero-800.webp 800w, img/hero-1600.webp 1600w"
+          srcset="img/hero-800.webp 800w, img/hero-1200.webp 1200w, img/hero-1600.webp 1600w, img/hero-2400.webp 2400w"
           sizes="100vw"
           alt="Juanse Durando con auriculares, retrato de estudio"
           fetchpriority="high"
@@ -60,11 +62,7 @@ const galeria = [
           <a class="icon-btn icon-btn--big icon-btn--accent" href={whatsappLink()} target="_blank" rel="noopener" aria-label="Contratar por WhatsApp" data-magnetic>
             <Icon name="whatsapp" />
           </a>
-          {isSet(site.socials.instagram) && (
-            <a class="icon-btn icon-btn--big" href={site.socials.instagram} target="_blank" rel="noopener" aria-label="Instagram de Juanse Durando" data-magnetic>
-              <Icon name="instagram" />
-            </a>
-          )}
+          <SocialLinks size="big" />
         </div>
       </div>
       <div class="hero__scroll" data-hero-line aria-hidden="true"><span></span></div>
@@ -78,7 +76,7 @@ const galeria = [
         <figure class:list={['stories__slide', { 'is-active': i === 0 }]}>
           <img
             src={`img/${s.name}-1200.webp`}
-            srcset={`img/${s.name}-800.webp 800w, img/${s.name}-1200.webp 1200w`}
+            srcset={`img/${s.name}-800.webp 800w, img/${s.name}-1200.webp 1200w, img/${s.name}-1600.webp 1600w`}
             sizes="(min-width: 900px) 50vw, 100vw"
             alt={s.alt}
             loading="lazy"
@@ -103,6 +101,31 @@ const galeria = [
       </div>
     </section>
 
+    <section class="trayecto" aria-label="Trayectoria">
+      <ul class="sr-only">
+        {trayectoria.map((t) => <li>{t}</li>)}
+        {estilo.map((t) => <li>{t}</li>)}
+      </ul>
+      <div class="marquee marquee--lugares" aria-hidden="true">
+        {[0, 1].map(() => (
+          <div class="marquee__row">
+            {trayectoria.map((t) => <span>{t}</span>)}
+          </div>
+        ))}
+      </div>
+      <div class="trayecto__stat" data-reveal>
+        <span class="trayecto__num">+4.000</span>
+        <span class="trayecto__label">personas en<br />Fiesta U · Puerto</span>
+      </div>
+      <div class="marquee marquee--estilo marquee--reverse" aria-hidden="true">
+        {[0, 1].map(() => (
+          <div class="marquee__row">
+            {estilo.map((t) => <span>{t}</span>)}
+          </div>
+        ))}
+      </div>
+    </section>
+
     <section class="galeria" aria-label="Fotos en vivo">
       {galeria.map((g) => (
         <figure class:list={['galeria__item', { 'galeria__item--big': g.big }]} data-reveal-img>
@@ -113,21 +136,29 @@ const galeria = [
 
     <section class="contacto" id="contacto" aria-label="Contrataciones">
       <div class="contacto__media" data-contact-media>
-        <img src="img/contacto-1200.webp" srcset="img/contacto-800.webp 800w, img/contacto-1200.webp 1200w" sizes="100vw" alt="Juanse Durando sentado sobre su flightcase" loading="lazy" />
+        <img src="img/contacto-1200.webp" srcset="img/contacto-800.webp 800w, img/contacto-1200.webp 1200w, img/contacto-1600.webp 1600w, img/contacto-2400.webp 2400w" sizes="100vw" alt="Juanse Durando sentado sobre su flightcase" loading="lazy" />
       </div>
       <div class="contacto__shade" aria-hidden="true"></div>
       <div class="contacto__content">
-        <div class="contacto__logo" set:html={logo} aria-hidden="true" />
+        <div class="contacto__logo"><HoloLogo /></div>
+        <p class="contacto__eventos">{eventos.join(' · ')}</p>
         <div class="contacto__actions" data-reveal>
           <a class="icon-btn icon-btn--xl icon-btn--accent" href={whatsappLink()} target="_blank" rel="noopener" aria-label="Contratar por WhatsApp" data-magnetic>
             <Icon name="whatsapp" />
           </a>
-          {isSet(site.socials.instagram) && (
-            <a class="icon-btn icon-btn--xl" href={site.socials.instagram} target="_blank" rel="noopener" aria-label="Instagram de Juanse Durando" data-magnetic>
-              <Icon name="instagram" />
+          <SocialLinks size="xl" />
+          {isSet(site.email) && (
+            <a class="icon-btn icon-btn--xl" href={`mailto:${site.email}`} aria-label={`Escribir a ${site.email}`} data-magnetic>
+              <Icon name="mail" />
             </a>
           )}
         </div>
+        {isSet(site.presskit) && (
+          <a class="presskit-btn" href={site.presskit} target="_blank" rel="noopener">
+            <Icon name="presskit" />
+            Press kit
+          </a>
+        )}
       </div>
     </section>
   </main>

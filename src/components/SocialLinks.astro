@@ -1,0 +1,25 @@
+---
+// Todas las redes cargadas en src/data/site.ts. Para sumar una, completar su link allá.
+import Icon from './Icon.astro';
+import { socialLinks } from '../data/site';
+
+interface Props {
+  size?: 'big' | 'xl';
+  only?: string[];
+}
+const { size, only } = Astro.props;
+const links = only ? socialLinks.filter((s) => only.includes(s.key)) : socialLinks;
+---
+
+{links.map((s) => (
+  <a
+    class:list={['icon-btn', size && `icon-btn--${size}`]}
+    href={s.href}
+    target="_blank"
+    rel="noopener me"
+    aria-label={`${s.name} de Juanse Durando`}
+    data-magnetic
+  >
+    <Icon name={s.key} />
+  </a>
+))}
