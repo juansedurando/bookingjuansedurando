@@ -39,16 +39,6 @@ ScrollTrigger.create({
   onLeaveBack: () => header?.classList.remove('is-solid'),
 });
 
-// ---------- Galería: pasa a color al entrar en pantalla ----------
-gsap.utils.toArray<HTMLElement>('.galeria__item').forEach((el) => {
-  ScrollTrigger.create({
-    trigger: el,
-    start: 'top 75%',
-    end: 'bottom 25%',
-    toggleClass: 'is-in',
-  });
-});
-
 {
   // Hero: parallax de la foto y fade del contenido
   gsap.to('[data-hero-media] img', {

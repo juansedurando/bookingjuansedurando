@@ -8,19 +8,6 @@ import SocialLinks from '../components/SocialLinks.astro';
 import logo from '../components/logo.svg?raw';
 import { site, isSet, whatsappLink, trayectoria, estilo, eventos } from '../data/site';
 
-// Galería de shows: "big" ocupa dos filas. "w" es el ancho real del original (versión grande)
-const galeria = [
-  { base: 'img/vivo-escenario', w: 1307, alt: 'Juanse Durando en escenario con su logo de fondo', big: true },
-  { base: 'img/vivo-azul', w: 1320, alt: 'Juanse Durando pasando música con luces azules' },
-  { base: 'img/vivo-fiesta-u', w: 639, alt: 'Juanse Durando en Fiesta U, Santa Fe' },
-  { base: 'img/vivo-gorra', w: 1320, alt: 'Juanse Durando con gorra y auriculares' },
-  { base: 'img/vivo-controlador', w: 1320, alt: 'Juanse Durando en el controlador' },
-  { base: 'img/vivo-xv', w: 941, alt: 'Juanse Durando tocando en un cumpleaños de 15' },
-  { base: 'img/vivo-aire-libre', w: 1320, alt: 'Juanse Durando en un evento al aire libre', big: true },
-  { base: 'img/vivo-cabina', w: 1320, alt: 'Juanse Durando en cabina' },
-  { base: 'img/vivo-bn', w: 1320, alt: 'Juanse Durando en blanco y negro' },
-  { base: 'img/vivo-gorra2', w: 1020, alt: 'Primer plano de Juanse Durando con gorra' },
-];
 ---
 
 <Base>
@@ -44,12 +31,6 @@ const galeria = [
           <span class="sr-only">Juanse Durando, DJ en Santa Fe, Argentina</span>
           <span class="hero__logo" data-hero-logo aria-hidden="true" set:html={logo} />
         </h1>
-        <div class="hero__actions" data-hero-line>
-          <a class="icon-btn icon-btn--big icon-btn--accent" href={whatsappLink()} target="_blank" rel="noopener" aria-label="Contratar por WhatsApp" data-magnetic>
-            <Icon name="whatsapp" />
-          </a>
-          <SocialLinks size="big" />
-        </div>
       </div>
       <div class="hero__scroll" data-hero-line aria-hidden="true"><span></span></div>
     </section>
@@ -115,39 +96,6 @@ const galeria = [
     <PresskitSlide img="fiestau" title="En cabina" heading="ON STAGE" maxW={2880} alt="Juanse Durando en la cabina del escenario de Fiesta U" side="right" id="en-cabina">
       <p>Juanse se caracteriza por una actitud seria y responsable detrás de la cabina, dejando que la música sea la protagonista de cada presentación.</p>
     </PresskitSlide>
-
-    <section class="galeria" aria-label="Fotos en vivo">
-      {galeria.map((g) => (
-        <figure class:list={['galeria__item', { 'galeria__item--big': g.big }]} data-reveal-img>
-          <img
-            src={`${g.base}-900.webp`}
-            srcset={g.w > 900 ? `${g.base}-900.webp 900w, ${g.base}-1600.webp ${g.w}w` : undefined}
-            sizes="(min-width: 700px) 34vw, 50vw"
-            alt={g.alt}
-            loading="lazy"
-          />
-        </figure>
-      ))}
-    </section>
-
-    <PresskitSlide img="rider" title="Rider técnico" heading="TECHNICAL RIDER" alt="Juanse Durando con auriculares" side="right" id="rider">
-      <dl class="rider">
-        <dt>Equipamiento propio</dt>
-        <dd>1x Pioneer XDJ AZ <span>(solo dentro de 350 km de Santa Fe)</span></dd>
-        <dt>Mixer DJ</dt>
-        <dd>1x Pioneer XDJ RX3, XZ o AZ</dd>
-        <dt>CD media players</dt>
-        <dd>2x CDJ 3000 / 2000 NXS2</dd>
-        <dt>Mixer</dt>
-        <dd>Pioneer DJM 900 / 900 NXS2 / DJM V10</dd>
-        <dt>Retornos</dt>
-        <dd>2x monitores activos de 15 W o más, uno de cada lado</dd>
-        <dt>Mesa de equipos</dt>
-        <dd>Altura entre 0,90 y 1,20 m, cubierta con tela negra o similar</dd>
-      </dl>
-      <p class="rider__nota">Si hace falta, prueba de sonido con el artista al menos 1 hora antes del evento.</p>
-    </PresskitSlide>
-
     <section class="contacto contacto--retrato" id="contacto" aria-label="Contrataciones">
       <div class="contacto__media" data-contact-media>
         <img src="img/contacto-lateral-1200.webp" srcset="img/contacto-lateral-1200.webp 1200w, img/contacto-lateral-1800.webp 1800w, img/contacto-lateral-2600.webp 2600w" sizes="(min-width: 861px) 52vw, 100vw" alt="Retrato de Juanse Durando con luz lateral" loading="lazy" />
