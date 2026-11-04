@@ -17,11 +17,6 @@ const slides = [
   { name: 'slide-espaldas', alt: 'Juanse Durando de espaldas con auriculares' },
 ];
 
-const reels = [
-  { src: 'video/reel-fiesta-u.mp4', poster: 'img/reel-poster.jpg', label: 'Juanse Durando en Fiesta U' },
-  { src: 'video/reel-cabina.mp4', poster: 'img/reel-cabina-poster.jpg', label: 'Juanse Durando en cabina' },
-];
-
 // Galería de shows: "big" ocupa dos filas
 const galeria = [
   { src: 'img/vivo-escenario-900.webp', alt: 'Juanse Durando en escenario con su logo de fondo', big: true },
@@ -97,20 +92,6 @@ const galeria = [
       <p>Sus sets combinan <b>cachengue, reggaetón y pop</b> actual e internacional, con remixes, mashups y edits que le dan dinamismo y personalidad a cada presentación.</p>
       <p>Su propuesta va más allá de hacer bailar: busca sorprender con mezclas inesperadas, conectar con el público y crear momentos que queden en el recuerdo.</p>
     </PresskitSlide>
-
-    <section class="reels" aria-label="Videos de Juanse Durando en vivo">
-      <div class="reels__track">
-        {reels.map((r) => (
-          <div class="reel" data-reveal>
-            <video src={r.src} poster={r.poster} muted loop playsinline preload="none" aria-label={r.label} data-autoplay></video>
-            <button class="reel__sound" type="button" aria-label="Activar sonido" data-sound>
-              <span class="reel__off"><Icon name="sound-off" /></span>
-              <span class="reel__on"><Icon name="sound-on" /></span>
-            </button>
-          </div>
-        ))}
-      </div>
-    </section>
 
     <PresskitSlide img="experiencia" title="Experiencia" alt="Juanse Durando tocando en Fiesta U" side="right">
       <p>Hizo warm up en <b>Quba</b>, <b>Samsara</b> (Mar del Plata) y <b>Boutique</b> (Pinamar), y llevó su música a <b>San Justo</b>, <b>Reconquista</b> y <b>Rosario</b>.</p>
