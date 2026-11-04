@@ -4,6 +4,7 @@ import Intro from '../components/Intro.astro';
 import Header from '../components/Header.astro';
 import Icon from '../components/Icon.astro';
 import HoloLogo from '../components/HoloLogo.astro';
+import SocialLinks from '../components/SocialLinks.astro';
 import logo from '../components/logo.svg?raw';
 import { site, isSet, whatsappLink, trayectoria, estilo, eventos } from '../data/site';
 
@@ -61,11 +62,7 @@ const galeria = [
           <a class="icon-btn icon-btn--big icon-btn--accent" href={whatsappLink()} target="_blank" rel="noopener" aria-label="Contratar por WhatsApp" data-magnetic>
             <Icon name="whatsapp" />
           </a>
-          {isSet(site.socials.instagram) && (
-            <a class="icon-btn icon-btn--big" href={site.socials.instagram} target="_blank" rel="noopener" aria-label="Instagram de Juanse Durando" data-magnetic>
-              <Icon name="instagram" />
-            </a>
-          )}
+          <SocialLinks size="big" />
         </div>
       </div>
       <div class="hero__scroll" data-hero-line aria-hidden="true"><span></span></div>
@@ -149,11 +146,7 @@ const galeria = [
           <a class="icon-btn icon-btn--xl icon-btn--accent" href={whatsappLink()} target="_blank" rel="noopener" aria-label="Contratar por WhatsApp" data-magnetic>
             <Icon name="whatsapp" />
           </a>
-          {isSet(site.socials.instagram) && (
-            <a class="icon-btn icon-btn--xl" href={site.socials.instagram} target="_blank" rel="noopener" aria-label="Instagram de Juanse Durando" data-magnetic>
-              <Icon name="instagram" />
-            </a>
-          )}
+          <SocialLinks size="xl" />
           {isSet(site.email) && (
             <a class="icon-btn icon-btn--xl" href={`mailto:${site.email}`} aria-label={`Escribir a ${site.email}`} data-magnetic>
               <Icon name="mail" />

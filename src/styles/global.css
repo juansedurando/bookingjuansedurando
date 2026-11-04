@@ -359,6 +359,7 @@ button {
 }
 .hero__actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 14px;
   margin-top: 26px;
 }
@@ -595,6 +596,8 @@ html.intro-active .hero__logo {
 }
 .contacto__actions {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 18px;
 }
 
