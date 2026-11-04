@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Intro from '../components/Intro.astro';
 import Header from '../components/Header.astro';
 import Icon from '../components/Icon.astro';
+import PresskitSlide from '../components/PresskitSlide.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import logo from '../components/logo.svg?raw';
 import { site, isSet, whatsappLink, trayectoria, estilo, eventos } from '../data/site';
@@ -67,6 +68,12 @@ const galeria = [
       <div class="hero__scroll" data-hero-line aria-hidden="true"><span></span></div>
     </section>
 
+    <PresskitSlide img="about" title="Sobre mí" alt="Juanse Durando de perfil, en blanco y negro" side="right" id="presskit">
+      <p class="pk__lead">Juan Segundo, DJ de Santa Fe, Argentina.</p>
+      <p>Arrancó en la música a los 17 años, formándose en los cursos de <b>@solocachengue</b> y <b>@lajuanitaestudio</b>.</p>
+      <p>Empezó tocando en eventos chicos, donde fue armando su público, ampliando su repertorio y encontrando una identidad musical propia, siempre buscando un ambiente cálido y conectar con quienes lo escuchan.</p>
+    </PresskitSlide>
+
     <section class="stories" aria-label="Fotos de Juanse Durando" data-stories>
       <div class="stories__bars" aria-hidden="true">
         {slides.map(() => <span><i></i></span>)}
@@ -86,6 +93,11 @@ const galeria = [
       <button class="stories__nav stories__nav--next" type="button" aria-label="Foto siguiente" data-stories-next></button>
     </section>
 
+    <PresskitSlide img="sonido" title="Sonido y estilo" alt="Juanse Durando mezclando en la consola" side="left">
+      <p>Sus sets combinan <b>cachengue, reggaetón y pop</b> actual e internacional, con remixes, mashups y edits que le dan dinamismo y personalidad a cada presentación.</p>
+      <p>Su propuesta va más allá de hacer bailar: busca sorprender con mezclas inesperadas, conectar con el público y crear momentos que queden en el recuerdo.</p>
+    </PresskitSlide>
+
     <section class="reels" aria-label="Videos de Juanse Durando en vivo">
       <div class="reels__track">
         {reels.map((r) => (
@@ -99,6 +111,12 @@ const galeria = [
         ))}
       </div>
     </section>
+
+    <PresskitSlide img="experiencia" title="Experiencia" alt="Juanse Durando tocando en Fiesta U" side="right">
+      <p>Hizo warm up en <b>Quba</b>, <b>Samsara</b> (Mar del Plata) y <b>Boutique</b> (Pinamar), y llevó su música a <b>San Justo</b>, <b>Reconquista</b> y <b>Rosario</b>.</p>
+      <p>En 2024 hizo una gira por <b>Punta del Este</b> como DJ residente del parador <b>Roll and Rock</b>, Uruguay. En Santa Fe tocó en eventos masivos como <b>Fiesta U</b> y <b>Puerto</b>, ante más de <b>4.000 personas</b>.</p>
+      <p>Además, es una de las primeras opciones para eventos sociales, fiestas de XV y recepciones en Santa Fe y alrededores.</p>
+    </PresskitSlide>
 
     <section class="trayecto" aria-label="Trayectoria">
       <ul class="sr-only">
@@ -125,6 +143,10 @@ const galeria = [
       </div>
     </section>
 
+    <PresskitSlide img="cabina" title="En cabina" alt="Juanse Durando en el escenario y en primer plano con gorra" side="right" id="en-cabina">
+      <p>Juanse se caracteriza por una actitud seria y responsable detrás de la cabina, dejando que la música sea la protagonista de cada presentación.</p>
+    </PresskitSlide>
+
     <section class="galeria" aria-label="Fotos en vivo">
       {galeria.map((g) => (
         <figure class:list={['galeria__item', { 'galeria__item--big': g.big }]} data-reveal-img>
@@ -132,6 +154,24 @@ const galeria = [
         </figure>
       ))}
     </section>
+
+    <PresskitSlide img="rider" title="Rider técnico" alt="Juanse Durando con auriculares" side="right" id="rider">
+      <dl class="rider">
+        <dt>Equipamiento propio</dt>
+        <dd>1x Pioneer XDJ AZ <span>(solo dentro de 350 km de Santa Fe)</span></dd>
+        <dt>Mixer DJ</dt>
+        <dd>1x Pioneer XDJ RX3, XZ o AZ</dd>
+        <dt>CD media players</dt>
+        <dd>2x CDJ 3000 / 2000 NXS2</dd>
+        <dt>Mixer</dt>
+        <dd>Pioneer DJM 900 / 900 NXS2 / DJM V10</dd>
+        <dt>Retornos</dt>
+        <dd>2x monitores activos de 15 W o más, uno de cada lado</dd>
+        <dt>Mesa de equipos</dt>
+        <dd>Altura entre 0,90 y 1,20 m, cubierta con tela negra o similar</dd>
+      </dl>
+      <p class="rider__nota">Si hace falta, prueba de sonido con el artista al menos 1 hora antes del evento.</p>
+    </PresskitSlide>
 
     <section class="contacto" id="contacto" aria-label="Contrataciones">
       <div class="contacto__media" data-contact-media>
