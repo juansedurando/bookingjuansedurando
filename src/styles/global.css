@@ -541,6 +541,35 @@ html.intro-active .hero__logo {
   gap: 18px;
 }
 
+/* Contacto con el retrato de luz lateral: en celular la cara arriba y todo lo demás abajo;
+   en PC la foto completa a la derecha y el logo y los botones a la izquierda, sin taparla. */
+.contacto--retrato .contacto__media img {
+  object-position: 50% 18%;
+}
+@media (min-width: 861px) {
+  .contacto--retrato .contacto__media {
+    inset: -6% 0 -6% auto;
+    width: 52%;
+  }
+  .contacto--retrato .contacto__media img {
+    object-position: 50% 22%;
+  }
+  .contacto--retrato .contacto__shade {
+    background:
+      linear-gradient(to right, var(--bg) 46%, rgba(5, 5, 5, 0.6) 56%, transparent 72%),
+      linear-gradient(to top, rgba(5, 5, 5, 0.9) 4%, transparent 30%);
+  }
+  .contacto--retrato .contacto__content {
+    top: 0;
+    bottom: 0;
+    right: 50%;
+    justify-content: center;
+  }
+  .contacto--retrato .contacto__logo {
+    width: min(38vw, 560px);
+  }
+}
+
 /* ---------- TRAYECTORIA (press kit) ---------- */
 
 .trayecto {
@@ -664,6 +693,54 @@ html.intro-active .hero__logo {
   height: auto;
   aspect-ratio: 16 / 9;
   object-fit: cover;
+}
+/* Celular: foto y texto forman una sola pieza. La foto se recorta hacia el lado donde está
+   Juanse, se funde con el fondo y el texto arranca encima de su parte de abajo. */
+@media (max-width: 860px) {
+  .pk__media img {
+    aspect-ratio: 1 / 1;
+  }
+  .pk--right .pk__media img {
+    object-position: 8% 50%;
+  }
+  .pk--left .pk__media img {
+    object-position: 92% 50%;
+  }
+  #en-cabina .pk__media img {
+    aspect-ratio: 4 / 3;
+    object-position: 50% 50%;
+  }
+  .pk__media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, rgba(5, 5, 5, 0.75) 72%, var(--bg) 100%);
+    pointer-events: none;
+  }
+  .pk__title {
+    z-index: 1;
+    font-size: 11vw;
+    top: 4%;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.7);
+  }
+  .pk--right .pk__title {
+    right: var(--pad);
+  }
+  .pk--left .pk__title {
+    left: var(--pad);
+  }
+  #rider .pk__title {
+    font-size: 9vw;
+  }
+  .pk__text {
+    position: relative;
+    z-index: 1;
+    margin-top: -26vw;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.9);
+  }
+  #en-cabina .pk__text {
+    margin-top: -16vw;
+  }
 }
 .pk__text {
   padding: 22px var(--pad) 40px;
