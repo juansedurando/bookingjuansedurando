@@ -592,7 +592,13 @@ html.intro-active .hero__logo {
   gap: 32px;
 }
 .contacto__logo {
-  width: min(84vw, 640px);
+  width: min(80vw, 640px);
+  color: var(--fg);
+}
+.contacto__logo svg {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 .contacto__actions {
   display: flex;
