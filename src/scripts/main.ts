@@ -39,73 +39,6 @@ ScrollTrigger.create({
   onLeaveBack: () => header?.classList.remove('is-solid'),
 });
 
-// Header: se esconde mientras las historias ocupan la parte de arriba (como en Instagram)
-ScrollTrigger.create({
-  trigger: '[data-stories]',
-  start: 'top 72px',
-  end: 'bottom 72px',
-  toggleClass: { targets: '[data-header]', className: 'is-over-stories' },
-});
-
-// ---------- Stories ----------
-const stories = document.querySelector<HTMLElement>('[data-stories]');
-if (stories) {
-  const slides = stories.querySelectorAll<HTMLElement>('.stories__slide');
-  const bars = stories.querySelectorAll<HTMLElement>('.stories__bars i');
-  const DURATION = 4.5;
-  let current = 0;
-  let fill: gsap.core.Tween | null = null;
-  let visible = false;
-
-  const show = (i: number) => {
-    current = (i + slides.length) % slides.length;
-    const n = slides.length;
-    slides.forEach((s, i) => {
-      s.classList.toggle('is-active', i === current);
-      s.classList.toggle('is-prev', i === (current - 1 + n) % n);
-      s.classList.toggle('is-next', i === (current + 1) % n);
-    });
-    bars.forEach((b, n) => gsap.set(b, { scaleX: n < current ? 1 : 0 }));
-    fill?.kill();
-    fill = gsap.to(bars[current], {
-      scaleX: 1,
-      duration: DURATION,
-      ease: 'none',
-      paused: !visible,
-      onComplete: () => show(current + 1),
-    });
-  };
-
-  stories.querySelector('[data-stories-next]')?.addEventListener('click', () => show(current + 1));
-  stories.querySelector('[data-stories-prev]')?.addEventListener('click', () => show(current - 1));
-
-  // Swipe horizontal
-  let x0 = 0;
-  stories.addEventListener('touchstart', (e) => (x0 = e.touches[0].clientX), { passive: true });
-  stories.addEventListener(
-    'touchend',
-    (e) => {
-      const dx = e.changedTouches[0].clientX - x0;
-      if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
-    },
-    { passive: true },
-  );
-
-  // Solo avanza mientras está en pantalla
-  ScrollTrigger.create({
-    trigger: stories,
-    start: 'top 60%',
-    end: 'bottom 40%',
-    onToggle: (self) => {
-      visible = self.isActive;
-      if (visible) fill?.play();
-      else fill?.pause();
-    },
-  });
-
-  show(0);
-}
-
 // ---------- Galería: pasa a color al entrar en pantalla ----------
 gsap.utils.toArray<HTMLElement>('.galeria__item').forEach((el) => {
   ScrollTrigger.create({
@@ -130,11 +63,11 @@ gsap.utils.toArray<HTMLElement>('.galeria__item').forEach((el) => {
     scrollTrigger: { trigger: '[data-hero]', start: '40% top', end: 'bottom top', scrub: true },
   });
 
-  // Stories: entra con zoom desde abajo
-  gsap.from('[data-stories]', {
-    scale: 0.88,
+  // Retrato: la foto sube apenas con el scroll
+  gsap.from('.retrato__img', {
+    yPercent: 8,
     ease: 'none',
-    scrollTrigger: { trigger: '[data-stories]', start: 'top bottom', end: 'top top', scrub: true },
+    scrollTrigger: { trigger: '.retrato', start: 'top bottom', end: 'bottom top', scrub: true },
   });
 
   // Bloques que aparecen al entrar en pantalla

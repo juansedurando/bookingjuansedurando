@@ -12,6 +12,11 @@ export const site = {
   email: 'juansegundodurando@gmail.com',
   // Press kit para organizadores (rider técnico incluido)
   presskit: 'https://noisy-dew-26ee.juanse-durando-presskitpagesdev.workers.dev/',
+  // Botonera de descargas: material en alta para productoras y flyers
+  descargas: {
+    book: 'https://drive.google.com/drive/folders/1TFS_K0_WqHAaREKbYHwzP1LNg3nu79Fu',
+    eventos: 'https://drive.google.com/drive/folders/1DRgD2_g02NjahV33VuxvAFCuNBJ3SGM0',
+  },
   // Redes: para sumar una, pegar el link en lugar de PENDIENTE.
   // Aparecen solas en la web (arriba, en la portada y en Contacto) y en Google.
   socials: {
@@ -59,3 +64,18 @@ export const trayectoria = [
 export const estilo = ['Cachengue', 'Reggaetón', 'Pop', 'Remixes', 'Mashups', 'Edits'];
 
 export const eventos = ['Boliches', 'Fiestas', 'XV', 'Eventos sociales'];
+
+// Página de recursos: material en alta para productoras y flyers
+export const recursos = {
+  carpetas: [
+    { titulo: 'Book de fotos', detalle: 'Fotos de estudio en alta', href: site.descargas.book, img: 'img/retrato-flightcase-1200.webp' },
+    { titulo: 'Eventos', detalle: 'Fotos y videos en vivo', href: site.descargas.eventos, img: 'img/vivo-escenario-900.webp' },
+  ],
+  logo: [
+    { label: 'PNG blanco', href: 'descargas/juanse-durando-logo-blanco.png' },
+    { label: 'PNG negro', href: 'descargas/juanse-durando-logo-negro.png' },
+    { label: 'SVG blanco', href: 'descargas/juanse-durando-logo-blanco.svg' },
+    { label: 'SVG negro', href: 'descargas/juanse-durando-logo-negro.svg' },
+  ],
+  logoZip: 'descargas/juanse-durando-logo.zip',
+};

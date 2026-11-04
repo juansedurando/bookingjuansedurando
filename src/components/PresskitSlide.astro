@@ -19,7 +19,7 @@ const widths = [1280, 1920, 2880, 3840].filter((w) => w <= maxW);
 <section class:list={['pk', `pk--${side}`]} id={id} aria-label={title}>
   <figure class="pk__media" data-reveal-img>
     <img
-      src={`img/pkbg-${img}-1920.webp`}
+      src={`img/pkbg-${img}-${Math.min(1920, widths[widths.length - 1])}.webp`}
       srcset={widths.map((w) => `img/pkbg-${img}-${w}.webp ${w}w`).join(', ')}
       sizes="100vw"
       alt={alt}
