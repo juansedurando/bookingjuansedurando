@@ -70,7 +70,6 @@ const galeria = [
         loading="lazy"
       />
       <div class="retrato__descargas">
-        <p class="retrato__label">Material en alta para flyers y productoras</p>
         <nav class="retrato__botonera" aria-label="Descargar fotos y videos en alta">
           {descargas.map((d) => (
             <a class="retrato__btn" href={d.href} {...(d.download ? { download: '' } : { target: '_blank', rel: 'noopener' })}>

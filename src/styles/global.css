@@ -430,14 +430,6 @@ html.intro-active .hero__logo {
   align-items: center;
   gap: 14px;
 }
-.retrato__label {
-  margin: 0;
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-align: center;
-  text-transform: uppercase;
-  color: #9a958f;
-}
 .retrato__botonera {
   display: grid;
   grid-template-columns: 1fr;
