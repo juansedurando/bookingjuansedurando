@@ -420,6 +420,15 @@ html.intro-active .hero__logo {
 .stories__slide.is-active {
   opacity: 1;
 }
+/* Los bordes de la foto se funden con el negro de la página: no se ve el recuadro */
+.stories__slide {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 78%, transparent 100%),
+    linear-gradient(to right, transparent 0%, #000 9%, #000 91%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 78%, transparent 100%),
+    linear-gradient(to right, transparent 0%, #000 9%, #000 91%, transparent 100%);
+  mask-composite: intersect;
+}
 .stories__slide img {
   width: 100%;
   height: 100%;
