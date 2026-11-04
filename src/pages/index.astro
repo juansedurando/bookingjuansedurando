@@ -19,16 +19,16 @@ const slides = [
 
 // Galería de shows: "big" ocupa dos filas
 const galeria = [
-  { src: 'img/vivo-escenario-900.webp', alt: 'Juanse Durando en escenario con su logo de fondo', big: true },
-  { src: 'img/vivo-azul-900.webp', alt: 'Juanse Durando pasando música con luces azules' },
-  { src: 'img/vivo-fiesta-u-640.webp', alt: 'Juanse Durando en Fiesta U, Santa Fe' },
-  { src: 'img/vivo-gorra-900.webp', alt: 'Juanse Durando con gorra y auriculares' },
-  { src: 'img/vivo-controlador-900.webp', alt: 'Juanse Durando en el controlador' },
-  { src: 'img/vivo-xv-900.webp', alt: 'Juanse Durando tocando en un cumpleaños de 15' },
-  { src: 'img/vivo-aire-libre-900.webp', alt: 'Juanse Durando en un evento al aire libre', big: true },
-  { src: 'img/vivo-cabina-900.webp', alt: 'Juanse Durando en cabina' },
-  { src: 'img/vivo-bn-900.webp', alt: 'Juanse Durando en blanco y negro' },
-  { src: 'img/vivo-gorra2-900.webp', alt: 'Primer plano de Juanse Durando con gorra' },
+  { base: 'img/vivo-escenario', alt: 'Juanse Durando en escenario con su logo de fondo', big: true },
+  { base: 'img/vivo-azul', alt: 'Juanse Durando pasando música con luces azules' },
+  { base: 'img/vivo-fiesta-u', alt: 'Juanse Durando en Fiesta U, Santa Fe' },
+  { base: 'img/vivo-gorra', alt: 'Juanse Durando con gorra y auriculares' },
+  { base: 'img/vivo-controlador', alt: 'Juanse Durando en el controlador' },
+  { base: 'img/vivo-xv', alt: 'Juanse Durando tocando en un cumpleaños de 15' },
+  { base: 'img/vivo-aire-libre', alt: 'Juanse Durando en un evento al aire libre', big: true },
+  { base: 'img/vivo-cabina', alt: 'Juanse Durando en cabina' },
+  { base: 'img/vivo-bn', alt: 'Juanse Durando en blanco y negro' },
+  { base: 'img/vivo-gorra2', alt: 'Primer plano de Juanse Durando con gorra' },
 ];
 ---
 
@@ -131,7 +131,13 @@ const galeria = [
     <section class="galeria" aria-label="Fotos en vivo">
       {galeria.map((g) => (
         <figure class:list={['galeria__item', { 'galeria__item--big': g.big }]} data-reveal-img>
-          <img src={g.src} alt={g.alt} loading="lazy" />
+          <img
+            src={`${g.base}-900.webp`}
+            srcset={`${g.base}-900.webp 900w, ${g.base}-1600.webp 1600w`}
+            sizes="(min-width: 700px) 34vw, 50vw"
+            alt={g.alt}
+            loading="lazy"
+          />
         </figure>
       ))}
     </section>
