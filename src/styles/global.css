@@ -365,12 +365,6 @@ button {
   width: 100%;
   height: auto;
 }
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 26px;
-}
 .hero__scroll {
   position: absolute;
   left: 50%;
