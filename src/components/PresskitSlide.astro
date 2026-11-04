@@ -10,9 +10,10 @@ interface Props {
   alt: string;
   side?: 'left' | 'right';
   id?: string;
+  maxW?: number; // ancho máximo que da el original (algunas fotos en vivo no llegan a 4K)
 }
-const { img, title, heading, headingDim, alt, side = 'right', id } = Astro.props;
-const widths = [1280, 1920, 2880, 3840];
+const { img, title, heading, headingDim, alt, side = 'right', id, maxW = 3840 } = Astro.props;
+const widths = [1280, 1920, 2880, 3840].filter((w) => w <= maxW);
 ---
 
 <section class:list={['pk', `pk--${side}`]} id={id} aria-label={title}>
