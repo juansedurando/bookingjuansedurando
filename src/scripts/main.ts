@@ -98,35 +98,6 @@ if (stories) {
   show(0);
 }
 
-// ---------- Reels ----------
-const reels = document.querySelectorAll<HTMLElement>('.reel');
-const io = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((e) => {
-      const v = e.target as HTMLVideoElement;
-      if (e.isIntersecting) v.play().catch(() => {});
-      else v.pause();
-    });
-  },
-  { threshold: 0.4 },
-);
-document.querySelectorAll('video[data-autoplay]').forEach((v) => io.observe(v));
-
-reels.forEach((reel) => {
-  const video = reel.querySelector('video')!;
-  reel.querySelector('[data-sound]')?.addEventListener('click', () => {
-    const turnOn = video.muted;
-    // Un solo video con sonido a la vez
-    reels.forEach((r) => {
-      r.querySelector('video')!.muted = true;
-      r.classList.remove('is-sound');
-    });
-    video.muted = !turnOn;
-    reel.classList.toggle('is-sound', turnOn);
-    if (turnOn) video.play().catch(() => {});
-  });
-});
-
 // ---------- Galería: pasa a color al entrar en pantalla ----------
 gsap.utils.toArray<HTMLElement>('.galeria__item').forEach((el) => {
   ScrollTrigger.create({

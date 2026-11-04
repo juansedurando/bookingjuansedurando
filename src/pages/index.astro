@@ -17,23 +17,18 @@ const slides = [
   { name: 'slide-espaldas', alt: 'Juanse Durando de espaldas con auriculares' },
 ];
 
-const reels = [
-  { src: 'video/reel-fiesta-u.mp4', poster: 'img/reel-poster.jpg', label: 'Juanse Durando en Fiesta U' },
-  { src: 'video/reel-cabina.mp4', poster: 'img/reel-cabina-poster.jpg', label: 'Juanse Durando en cabina' },
-];
-
-// Galería de shows: "big" ocupa dos filas
+// Galería de shows: "big" ocupa dos filas. "w" es el ancho real del original (versión grande)
 const galeria = [
-  { src: 'img/vivo-escenario-900.webp', alt: 'Juanse Durando en escenario con su logo de fondo', big: true },
-  { src: 'img/vivo-azul-900.webp', alt: 'Juanse Durando pasando música con luces azules' },
-  { src: 'img/vivo-fiesta-u-640.webp', alt: 'Juanse Durando en Fiesta U, Santa Fe' },
-  { src: 'img/vivo-gorra-900.webp', alt: 'Juanse Durando con gorra y auriculares' },
-  { src: 'img/vivo-controlador-900.webp', alt: 'Juanse Durando en el controlador' },
-  { src: 'img/vivo-xv-900.webp', alt: 'Juanse Durando tocando en un cumpleaños de 15' },
-  { src: 'img/vivo-aire-libre-900.webp', alt: 'Juanse Durando en un evento al aire libre', big: true },
-  { src: 'img/vivo-cabina-900.webp', alt: 'Juanse Durando en cabina' },
-  { src: 'img/vivo-bn-900.webp', alt: 'Juanse Durando en blanco y negro' },
-  { src: 'img/vivo-gorra2-900.webp', alt: 'Primer plano de Juanse Durando con gorra' },
+  { base: 'img/vivo-escenario', w: 1307, alt: 'Juanse Durando en escenario con su logo de fondo', big: true },
+  { base: 'img/vivo-azul', w: 1320, alt: 'Juanse Durando pasando música con luces azules' },
+  { base: 'img/vivo-fiesta-u', w: 639, alt: 'Juanse Durando en Fiesta U, Santa Fe' },
+  { base: 'img/vivo-gorra', w: 1320, alt: 'Juanse Durando con gorra y auriculares' },
+  { base: 'img/vivo-controlador', w: 1320, alt: 'Juanse Durando en el controlador' },
+  { base: 'img/vivo-xv', w: 941, alt: 'Juanse Durando tocando en un cumpleaños de 15' },
+  { base: 'img/vivo-aire-libre', w: 1320, alt: 'Juanse Durando en un evento al aire libre', big: true },
+  { base: 'img/vivo-cabina', w: 1320, alt: 'Juanse Durando en cabina' },
+  { base: 'img/vivo-bn', w: 1320, alt: 'Juanse Durando en blanco y negro' },
+  { base: 'img/vivo-gorra2', w: 1020, alt: 'Primer plano de Juanse Durando con gorra' },
 ];
 ---
 
@@ -98,20 +93,6 @@ const galeria = [
       <p>Su propuesta va más allá de hacer bailar: busca sorprender con mezclas inesperadas, conectar con el público y crear momentos que queden en el recuerdo.</p>
     </PresskitSlide>
 
-    <section class="reels" aria-label="Videos de Juanse Durando en vivo">
-      <div class="reels__track">
-        {reels.map((r) => (
-          <div class="reel" data-reveal>
-            <video src={r.src} poster={r.poster} muted loop playsinline preload="none" aria-label={r.label} data-autoplay></video>
-            <button class="reel__sound" type="button" aria-label="Activar sonido" data-sound>
-              <span class="reel__off"><Icon name="sound-off" /></span>
-              <span class="reel__on"><Icon name="sound-on" /></span>
-            </button>
-          </div>
-        ))}
-      </div>
-    </section>
-
     <PresskitSlide img="experiencia" title="Experiencia" alt="Juanse Durando tocando en Fiesta U" side="right">
       <p>Hizo warm up en <b>Quba</b>, <b>Samsara</b> (Mar del Plata) y <b>Boutique</b> (Pinamar), y llevó su música a <b>San Justo</b>, <b>Reconquista</b> y <b>Rosario</b>.</p>
       <p>En 2024 hizo una gira por <b>Punta del Este</b> como DJ residente del parador <b>Roll and Rock</b>, Uruguay. En Santa Fe tocó en eventos masivos como <b>Fiesta U</b> y <b>Puerto</b>, ante más de <b>4.000 personas</b>.</p>
@@ -150,7 +131,13 @@ const galeria = [
     <section class="galeria" aria-label="Fotos en vivo">
       {galeria.map((g) => (
         <figure class:list={['galeria__item', { 'galeria__item--big': g.big }]} data-reveal-img>
-          <img src={g.src} alt={g.alt} loading="lazy" />
+          <img
+            src={`${g.base}-900.webp`}
+            srcset={g.w > 900 ? `${g.base}-900.webp 900w, ${g.base}-1600.webp ${g.w}w` : undefined}
+            sizes="(min-width: 700px) 34vw, 50vw"
+            alt={g.alt}
+            loading="lazy"
+          />
         </figure>
       ))}
     </section>
