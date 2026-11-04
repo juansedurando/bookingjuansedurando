@@ -65,9 +65,17 @@ export const estilo = ['Cachengue', 'Reggaetón', 'Pop', 'Remixes', 'Mashups', '
 
 export const eventos = ['Boliches', 'Fiestas', 'XV', 'Eventos sociales'];
 
-// Botones de la botonera de descargas. El logo se baja directo de la web (PNG y SVG, blanco y negro, en un zip)
-export const descargas = [
-  { label: 'Book de fotos', href: site.descargas.book },
-  { label: 'Eventos: fotos y videos', href: site.descargas.eventos },
-  { label: 'Logo', href: 'descargas/juanse-durando-logo.zip', download: true },
-];
+// Página de recursos: material en alta para productoras y flyers
+export const recursos = {
+  carpetas: [
+    { titulo: 'Book de fotos', detalle: 'Fotos de estudio en alta', href: site.descargas.book, img: 'img/retrato-flightcase-1200.webp' },
+    { titulo: 'Eventos', detalle: 'Fotos y videos en vivo', href: site.descargas.eventos, img: 'img/vivo-escenario-900.webp' },
+  ],
+  logo: [
+    { label: 'PNG blanco', href: 'descargas/juanse-durando-logo-blanco.png' },
+    { label: 'PNG negro', href: 'descargas/juanse-durando-logo-negro.png' },
+    { label: 'SVG blanco', href: 'descargas/juanse-durando-logo-blanco.svg' },
+    { label: 'SVG negro', href: 'descargas/juanse-durando-logo-negro.svg' },
+  ],
+  logoZip: 'descargas/juanse-durando-logo.zip',
+};

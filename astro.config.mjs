@@ -7,4 +7,6 @@ const pages = process.env.GITHUB_PAGES === 'true';
 export default defineConfig({
   site: pages ? 'https://mateobenitez-dev.github.io' : 'https://juansedurando.com.ar',
   base: pages ? '/Juanse-Durando-' : undefined,
+  // recursos.html queda al lado de index.html: las rutas relativas (img/, descargas/) sirven igual
+  build: { format: 'file' },
 });

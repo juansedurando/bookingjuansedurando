@@ -419,30 +419,24 @@ html.intro-active .hero__logo {
     linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
   mask-composite: intersect;
 }
-.retrato__descargas {
+.retrato__fotos {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+}
+/* En celular va solo la foto del centro; en PC las tres se funden como una sola */
+.retrato__lado {
+  display: none;
+}
+.retrato__recursos {
   position: relative;
   z-index: 1;
-  margin-top: -16px;
-  width: 100%;
-  padding: 0 var(--pad);
-  display: flex;
-  flex-direction: column;
+  margin-top: -24px;
+  display: inline-flex;
   align-items: center;
-  gap: 14px;
-}
-.retrato__botonera {
-  display: grid;
-  grid-template-columns: 1fr;
   gap: 10px;
-  width: 100%;
-  max-width: 360px;
-}
-.retrato__btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 15px 24px;
+  padding: 16px 28px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.28);
   background: rgba(5, 5, 5, 0.6);
@@ -454,8 +448,8 @@ html.intro-active .hero__logo {
   text-decoration: none;
   transition: background 0.3s, border-color 0.3s;
 }
-.retrato__btn:hover,
-.retrato__btn:focus-visible {
+.retrato__recursos:hover,
+.retrato__recursos:focus-visible {
   background: var(--accent);
   border-color: var(--accent);
 }
@@ -463,18 +457,49 @@ html.intro-active .hero__logo {
   .retrato {
     padding: 40px 0 90px;
   }
-  .retrato__img {
+  .retrato__fotos {
+    height: min(90svh, 1000px);
+  }
+  .retrato__img,
+  .retrato__lado {
+    display: block;
     width: auto;
-    height: min(88svh, 1100px);
-    max-width: 100%;
-  }
-  .retrato__descargas {
-    margin-top: -20px;
-  }
-  .retrato__botonera {
-    grid-template-columns: repeat(3, auto);
+    height: 100%;
     max-width: none;
-    width: auto;
+    flex: none;
+  }
+  /* Las fotos se enciman y se funden de costado: no se ve dónde termina una y empieza la otra */
+  .retrato__lado {
+    position: relative;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 80%, transparent 100%),
+      linear-gradient(var(--lado-dir), transparent 0%, #000 20%, #000 60%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 80%, transparent 100%),
+      linear-gradient(var(--lado-dir), transparent 0%, #000 20%, #000 60%, transparent 100%);
+    mask-composite: intersect;
+  }
+  .retrato__lado--izq {
+    --lado-dir: to right;
+    margin-right: -9vw;
+    order: 0;
+  }
+  .retrato__lado--der {
+    --lado-dir: to left;
+    margin-left: -9vw;
+    order: 2;
+  }
+  .retrato__img {
+    position: relative;
+    z-index: 1;
+    order: 1;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 82%, transparent 100%),
+      linear-gradient(to right, transparent 0%, #000 22%, #000 78%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 82%, transparent 100%),
+      linear-gradient(to right, transparent 0%, #000 22%, #000 78%, transparent 100%);
+  }
+  .retrato__recursos {
+    margin-top: -28px;
+    font-size: 14px;
   }
 }
 

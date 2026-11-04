@@ -1,0 +1,204 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import logo from '../components/logo.svg?raw';
+import { recursos, whatsappLink } from '../data/site';
+---
+
+<Base>
+  <script is:inline>
+    document.documentElement.classList.remove('intro-active');
+  </script>
+  <header class="header is-solid">
+    <a href="./" class="header__logo" aria-label="Volver a la web de Juanse Durando" set:html={logo} />
+    <div class="header__icons">
+      <a class="icon-btn icon-btn--accent" href={whatsappLink()} target="_blank" rel="noopener" aria-label="Contratar por WhatsApp">
+        <Icon name="whatsapp" />
+      </a>
+    </div>
+  </header>
+
+  <main class="recursos">
+    <h1 class="recursos__titulo">RECURSOS</h1>
+    <p class="recursos__bajada">Fotos, videos y logo en alta. Elegí lo que necesites.</p>
+
+    <div class="recursos__grid">
+      {recursos.carpetas.map((c) => (
+        <a class="recurso" href={c.href} target="_blank" rel="noopener">
+          <img class="recurso__img" src={c.img} alt="" loading="lazy" />
+          <span class="recurso__info">
+            <span class="recurso__titulo">{c.titulo}</span>
+            <span class="recurso__detalle">{c.detalle}</span>
+            <span class="recurso__accion">Abrir carpeta ↗</span>
+          </span>
+        </a>
+      ))}
+
+      <section class="recurso recurso--logo" aria-label="Logo">
+        <div class="recurso__logos">
+          <span class="recurso__logo recurso__logo--oscuro" set:html={logo} />
+          <span class="recurso__logo recurso__logo--claro" set:html={logo} />
+        </div>
+        <div class="recurso__info">
+          <span class="recurso__titulo">Logo</span>
+          <span class="recurso__detalle">PNG transparente (4000 px) y SVG vectorial</span>
+          <div class="recurso__formatos">
+            {recursos.logo.map((l) => (
+              <a class="recurso__formato" href={l.href} download>{l.label}</a>
+            ))}
+          </div>
+          <a class="recurso__todo" href={recursos.logoZip} download>Descargar todo (.zip)</a>
+        </div>
+      </section>
+    </div>
+
+    <a class="recursos__volver" href="./">← Volver a la web</a>
+  </main>
+</Base>
+
+<style>
+  .recursos {
+    min-height: 100svh;
+    padding: 110px var(--pad) 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .recursos__titulo {
+    margin: 0;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(56px, 14vw, 140px);
+    line-height: 0.9;
+    letter-spacing: 0.01em;
+  }
+  .recursos__bajada {
+    margin: 14px 0 34px;
+    color: var(--muted);
+    font-size: 15px;
+  }
+  .recursos__grid {
+    display: grid;
+    gap: 16px;
+  }
+  .recurso {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+    background: #0b0b0b;
+    color: var(--fg);
+    text-decoration: none;
+    transition: border-color 0.3s;
+  }
+  a.recurso:hover {
+    border-color: var(--accent);
+  }
+  .recurso__img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: 50% 30%;
+    display: block;
+  }
+  .recurso__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 18px 20px 22px;
+  }
+  .recurso__titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .recurso__detalle {
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .recurso__accion {
+    margin-top: 12px;
+    align-self: flex-start;
+    padding: 11px 18px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .recurso__logos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    aspect-ratio: 4 / 3;
+  }
+  .recurso__logo {
+    display: grid;
+    place-items: center;
+    padding: 0 14%;
+  }
+  .recurso__logo :global(svg) {
+    width: 100%;
+    height: auto;
+  }
+  .recurso__logo--oscuro {
+    background: #050505;
+    color: #fff;
+  }
+  .recurso__logo--claro {
+    background: #f2eee9;
+    color: #000;
+  }
+  .recurso__formatos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .recurso__formato,
+  .recurso__todo {
+    display: block;
+    padding: 11px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(242, 238, 233, 0.28);
+    color: var(--fg);
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .recurso__formato:hover,
+  .recurso__todo:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .recurso__todo {
+    margin-top: 8px;
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .recursos__volver {
+    display: inline-block;
+    margin-top: 36px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+  }
+  @media (min-width: 861px) {
+    .recursos {
+      padding-top: 150px;
+    }
+    .recursos__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+  }
+</style>
