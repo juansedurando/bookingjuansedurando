@@ -62,19 +62,57 @@ export function runIntro({ onDone }: IntroOptions) {
   // Zoom lento y continuo: aunque el celular no deje reproducir el video, la escena nunca queda quieta
   intro.to(bg, { scale: 1.2, duration: 14, ease: 'none', repeat: -1, yoyo: true });
 
-  // iPhone en ahorro de batería y el navegador de Instagram a veces frenan el autoplay:
-  // se reintenta al cargar, al volver a la pestaña y con el primer toque
-  const playVideo = () => {
-    if (video && video.paused) video.play().catch(() => {});
+  // El video de fondo tiene que estar SIEMPRE andando. iPhone en ahorro de batería, el navegador
+  // de Instagram o un corte de datos lo pueden frenar: se fuerza silencio, se reintenta ante
+  // cualquier pausa y un control cada medio segundo lo vuelve a poner en marcha. Si el celular
+  // directamente no deja reproducir videos, se cambia por la misma toma como imagen animada,
+  // que no depende del autoplay.
+  let fallback = false;
+  let fails = 0;
+  const useFallback = () => {
+    if (fallback || !video) return;
+    fallback = true;
+    const img = new Image();
+    img.alt = '';
+    img.decoding = 'async';
+    img.onload = () => {
+      video.replaceWith(img);
+    };
+    img.src = 'img/intro-loop.webp';
   };
-  playVideo();
-  video?.addEventListener('canplay', playVideo);
-  video?.addEventListener('pause', () => {
-    if (!leaving && !document.hidden) setTimeout(playVideo, 300);
-  });
+  const playVideo = () => {
+    if (!video || fallback || leaving) return;
+    video.muted = true;
+    video.defaultMuted = true;
+    if (video.ended) video.currentTime = 0;
+    if (!video.paused) return;
+    video
+      .play()
+      .then(() => {
+        fails = 0;
+      })
+      .catch((err: DOMException) => {
+        // NotAllowedError = el sistema bloquea el autoplay (ahorro de batería): no tiene sentido insistir
+        if (err?.name === 'NotAllowedError' || ++fails >= 6) useFallback();
+      });
+  };
+  if (video) {
+    video.muted = true;
+    video.setAttribute('muted', '');
+    playVideo();
+    ['canplay', 'loadeddata', 'pause', 'ended', 'stalled', 'suspend', 'emptied'].forEach((ev) =>
+      video.addEventListener(ev, () => setTimeout(playVideo, ev === 'pause' ? 50 : 0)),
+    );
+    // Si no arrancó en 2,5 s (sin evento de error), se pasa a la imagen animada
+    setTimeout(() => {
+      if (video.paused && video.currentTime === 0) useFallback();
+    }, 2500);
+  }
+  const watchdog = window.setInterval(playVideo, 500);
   document.addEventListener('visibilitychange', playVideo);
-  window.addEventListener('touchstart', playVideo, { once: true, passive: true });
-  window.addEventListener('pointerdown', playVideo, { once: true });
+  window.addEventListener('pageshow', playVideo);
+  window.addEventListener('touchstart', playVideo, { passive: true });
+  window.addEventListener('pointerdown', playVideo);
 
   const loaded = { n: 0 };
   const progress = { v: 0 };
@@ -207,6 +245,10 @@ export function runIntro({ onDone }: IntroOptions) {
     window.removeEventListener('touchmove', onTouchMove);
     window.removeEventListener('keydown', onKey);
     document.removeEventListener('visibilitychange', playVideo);
+    window.removeEventListener('pageshow', playVideo);
+    window.removeEventListener('touchstart', playVideo);
+    window.removeEventListener('pointerdown', playVideo);
+    clearInterval(watchdog);
   }
 
   window.addEventListener('wheel', onWheel, { passive: true });
