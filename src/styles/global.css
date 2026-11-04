@@ -249,7 +249,20 @@ button {
 .header.is-solid {
   opacity: 1;
   transform: none;
-  background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0));
+}
+/* Fondo del header: tapa el texto que pasa por debajo y se funde hacia abajo */
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 -32px;
+  z-index: -1;
+  background: linear-gradient(var(--bg) 0%, var(--bg) 66%, rgba(5, 5, 5, 0));
+  pointer-events: none;
+}
+.header.is-solid.is-over-stories {
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
 }
 .header__logo {
   width: 104px;
@@ -420,7 +433,7 @@ html.intro-active .hero__logo {
 }
 .stories__bars {
   position: absolute;
-  top: 88px;
+  top: calc(14px + env(safe-area-inset-top, 0px));
   left: 12px;
   right: 12px;
   z-index: 2;
