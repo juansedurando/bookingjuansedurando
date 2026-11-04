@@ -634,6 +634,31 @@ html.intro-active .hero__logo {
   margin: 0;
   overflow: hidden;
 }
+.pk__media {
+  position: relative;
+}
+/* Título de la placa: mismo lugar y tamaño relativo que en el press kit */
+.pk__title {
+  position: absolute;
+  top: 5.5%;
+  margin: 0;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 4.6vw;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  white-space: nowrap;
+}
+.pk__title span {
+  color: #9a958f;
+}
+.pk--right .pk__title {
+  right: 5%;
+}
+.pk--left .pk__title {
+  left: 3.5%;
+}
 .pk__media img {
   width: 100%;
   height: auto;
