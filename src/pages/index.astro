@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Intro from '../components/Intro.astro';
 import Header from '../components/Header.astro';
 import Icon from '../components/Icon.astro';
+import HoloLogo from '../components/HoloLogo.astro';
 import logo from '../components/logo.svg?raw';
 import { site, isSet, whatsappLink, trayectoria, estilo, eventos } from '../data/site';
 
@@ -142,7 +143,7 @@ const galeria = [
       </div>
       <div class="contacto__shade" aria-hidden="true"></div>
       <div class="contacto__content">
-        <div class="contacto__logo" set:html={logo} aria-hidden="true" />
+        <div class="contacto__logo"><HoloLogo /></div>
         <p class="contacto__eventos">{eventos.join(' · ')}</p>
         <div class="contacto__actions" data-reveal>
           <a class="icon-btn icon-btn--xl icon-btn--accent" href={whatsappLink()} target="_blank" rel="noopener" aria-label="Contratar por WhatsApp" data-magnetic>
