@@ -61,32 +61,23 @@ const galeria = [
     </PresskitSlide>
 
     <section class="retrato" aria-label="Juanse Durando sentado sobre su flight case">
-      <div class="retrato__fotos">
-        <img
-          class="retrato__lado retrato__lado--izq"
-          src="img/slide-anteojos-1200.webp"
-          srcset="img/slide-anteojos-800.webp 800w, img/slide-anteojos-1200.webp 1200w, img/slide-anteojos-1600.webp 1600w"
-          sizes="30vw"
-          alt="Juanse Durando con anteojos de sol"
-          loading="lazy"
+      <picture class="retrato__fotos">
+        <source
+          media="(min-width: 861px)"
+          srcset="img/triptico-1280.webp 1280w, img/triptico-1920.webp 1920w, img/triptico-2880.webp 2880w, img/triptico-3660.webp 3660w"
+          sizes="100vw"
+          width="3660"
+          height="1600"
         />
         <img
           class="retrato__img"
           src="img/retrato-flightcase-1200.webp"
           srcset="img/retrato-flightcase-1200.webp 1200w, img/retrato-flightcase-1800.webp 1800w, img/retrato-flightcase-2600.webp 2600w"
-          sizes="(min-width: 861px) 60vw, 100vw"
-          alt="Juanse Durando sentado sobre el flight case con su logo"
+          sizes="100vw"
+          alt="Juanse Durando en la sesión de estudio"
           loading="lazy"
         />
-        <img
-          class="retrato__lado retrato__lado--der"
-          src="img/slide-auriculares-1200.webp"
-          srcset="img/slide-auriculares-800.webp 800w, img/slide-auriculares-1200.webp 1200w, img/slide-auriculares-1600.webp 1600w"
-          sizes="30vw"
-          alt="Juanse Durando poniéndose los auriculares"
-          loading="lazy"
-        />
-      </div>
+      </picture>
       <a class="retrato__recursos" href="recursos.html" data-magnetic>
         Fotos, videos y logo
         <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M11 4h2v9.2l3.3-3.3 1.4 1.4L12 17l-5.7-5.7 1.4-1.4 3.3 3.3V4ZM5 19h14v2H5z" fill="currentColor"/></svg>
