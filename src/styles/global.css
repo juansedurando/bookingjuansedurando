@@ -775,6 +775,32 @@ html.intro-active .hero__logo {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--muted);
+  flex-wrap: wrap;
+  row-gap: 14px;
+}
+
+.footer-credit {
+  flex-basis: 100%;
+  text-align: center;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 10px;
+  transition: color 0.3s var(--ease-out);
+}
+
+.footer-credit strong {
+  font-weight: 600;
+  color: var(--fg);
+  transition: color 0.3s var(--ease-out);
+}
+
+.footer-credit:hover,
+.footer-credit:focus-visible,
+.footer-credit:hover strong,
+.footer-credit:focus-visible strong {
+  color: var(--accent);
 }
 
 /* ---------- BOTÓN FLOTANTE (PC) ---------- */

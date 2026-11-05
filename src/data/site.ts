@@ -19,6 +19,8 @@ export const site = {
   },
   // Redes: para sumar una, pegar el link en lugar de PENDIENTE.
   // Aparecen solas en la web (arriba, en la portada y en Contacto) y en Google.
+  // Crédito discreto en el pie de página (lo pidió el cliente)
+  credito: { nombre: 'Matedev', href: 'https://matedev.com.ar' },
   socials: {
     instagram: 'https://www.instagram.com/juansedurando',
     tiktok: 'PENDIENTE',
