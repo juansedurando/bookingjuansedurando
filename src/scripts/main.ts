@@ -111,12 +111,27 @@ if (canHover) {
   });
 }
 
-// Botón de mail: en la compu, mailto: abre Outlook (u otro programa que casi nadie configura).
-// Con mouse lo mandamos a redactar en Gmail web; en el celu queda mailto:, que abre la app de mail.
-if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
-  document.querySelectorAll<HTMLAnchorElement>('a[data-gmail]').forEach((a) => {
-    a.href = a.dataset.gmail!;
+// Botón de mail: mailto: abre la app de mail predeterminada, que muchas veces es Outlook o Mail sin configurar.
+// Intentamos abrir Gmail directo y, si no está, caemos a lo que haya.
+document.querySelectorAll<HTMLAnchorElement>('a[data-gmail]').forEach((a) => {
+  const to = a.href.replace(/^mailto:/, '');
+  const web = a.dataset.gmail!;
+  const ua = navigator.userAgent;
+  if (/Android/i.test(ua)) {
+    // Intent de Android: abre la app de Gmail; si no está instalada, Gmail web.
+    a.href = `intent:${to}#Intent;scheme=mailto;package=com.google.android.gm;S.browser_fallback_url=${encodeURIComponent(web)};end`;
+  } else if (/iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)) {
+    // iOS: esquema de la app de Gmail; si en 1,5 s la página sigue visible (no está instalada), mailto:.
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const fallback = setTimeout(() => { if (!document.hidden) location.href = `mailto:${to}`; }, 1500);
+      document.addEventListener('visibilitychange', () => clearTimeout(fallback), { once: true });
+      location.href = `googlegmail:///co?to=${encodeURIComponent(to)}`;
+    });
+  } else if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    // Compu: Gmail web en pestaña nueva.
+    a.href = web;
     a.target = '_blank';
     a.rel = 'noopener';
-  });
-}
+  }
+});
