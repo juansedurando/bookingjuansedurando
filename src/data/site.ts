@@ -9,7 +9,7 @@ export const site = {
     'Juanse Durando, DJ en Santa Fe capital. Cachengue, reggaetón y pop. Boliches, fiestas masivas, XV y eventos sociales. Contrataciones por WhatsApp.',
   // Formato internacional sin + ni espacios, ej: 5493425000000
   whatsapp: '5493425174121',
-  email: 'juansegundodurando@gmail.com',
+  email: 'durandojuanse@gmail.com',
   // Press kit para organizadores (rider técnico incluido)
   presskit: 'descargas/juanse-durando-presskit-2027.pdf',
   // Botonera de descargas: material en alta para productoras y flyers

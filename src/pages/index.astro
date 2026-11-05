@@ -110,7 +110,7 @@ import { site, isSet, whatsappLink, trayectoria, estilo, eventos } from '../data
           </a>
           <SocialLinks size="xl" />
           {isSet(site.email) && (
-            <a class="icon-btn icon-btn--xl" href={`mailto:${site.email}`} aria-label={`Escribir a ${site.email}`} data-magnetic>
+            <a class="icon-btn icon-btn--xl" href={`mailto:${site.email}`} data-gmail={`https://mail.google.com/mail/?view=cm&fs=1&to=${site.email}`} aria-label={`Escribir a ${site.email}`} data-magnetic>
               <Icon name="mail" />
             </a>
           )}
