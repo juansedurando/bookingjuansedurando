@@ -11,7 +11,7 @@ export const site = {
   whatsapp: '5493425174121',
   email: 'juansegundodurando@gmail.com',
   // Press kit para organizadores (rider técnico incluido)
-  presskit: 'https://noisy-dew-26ee.juanse-durando-presskitpagesdev.workers.dev/',
+  presskit: 'descargas/juanse-durando-presskit-2027.pdf',
   // Botonera de descargas: material en alta para productoras y flyers
   descargas: {
     book: 'https://drive.google.com/drive/folders/1TFS_K0_WqHAaREKbYHwzP1LNg3nu79Fu',
