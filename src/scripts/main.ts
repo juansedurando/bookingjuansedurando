@@ -110,3 +110,13 @@ if (canHover) {
     });
   });
 }
+
+// Botón de mail: en la compu, mailto: abre Outlook (u otro programa que casi nadie configura).
+// Con mouse lo mandamos a redactar en Gmail web; en el celu queda mailto:, que abre la app de mail.
+if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  document.querySelectorAll<HTMLAnchorElement>('a[data-gmail]').forEach((a) => {
+    a.href = a.dataset.gmail!;
+    a.target = '_blank';
+    a.rel = 'noopener';
+  });
+}
