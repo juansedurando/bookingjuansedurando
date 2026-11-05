@@ -128,8 +128,9 @@ document.querySelectorAll<HTMLAnchorElement>('a[data-gmail]').forEach((a) => {
       document.addEventListener('visibilitychange', () => clearTimeout(fallback), { once: true });
       location.href = `googlegmail:///co?to=${encodeURIComponent(to)}`;
     });
-  } else if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    // Compu: Gmail web en pestaña nueva.
+  } else {
+    // Compu (también notebooks con pantalla táctil): Gmail web en pestaña nueva.
+    // mailto: en Windows suele no abrir nada si no hay un programa de mail configurado.
     a.href = web;
     a.target = '_blank';
     a.rel = 'noopener';
