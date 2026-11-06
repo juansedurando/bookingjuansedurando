@@ -4,7 +4,7 @@ import csp from './integrations/csp.mjs';
 // Dominio propio de la web.
 const DOMINIO = 'bookingjuansedurando.com';
 // Cuando el dominio esté conectado en Settings → Pages, cambiar a true.
-const CON_DOMINIO = false;
+const CON_DOMINIO = true;
 
 // Sin dominio, en GitHub Pages la web vive en https://<dueño>.github.io/<repo>/ (se arma solo con el repo).
 const pages = process.env.GITHUB_PAGES === 'true' && !CON_DOMINIO;
